@@ -1,28 +1,42 @@
-# Cori V2 Monorepo
+<p align="center">
+  <img src="assets/demo.gif" alt="Cori. O make bootstrap sobe Postgres, Redis e a API. O /health responde ok." width="820">
+</p>
 
-Fundacao inicial do Cori V2 em arquitetura monorepo com:
+Cori é o sistema do consultório de psicologia. Clínica, paciente, triagem, agenda, atividade e formulário no mesmo lugar. Cada consultório fica isolado do outro.
 
-- `backend/`: FastAPI + SQLAlchemy + worker.
-- `front-end/`: Expo + TypeScript bootstrap.
-- `infra/`: Docker Compose (API, Worker, Redis, PostgreSQL 17.6).
+## Do que é feito
 
-## Bootstrap local (comando unico)
+Backend em Python 3.12: FastAPI, SQLAlchemy, Alembic, PostgreSQL 17 e Redis. O worker roda ao lado da API. O app é Expo, em `front-end/`, com React Native, Expo Router e Reanimated.
+
+O que já tem rota de verdade: autenticação, perfil da clínica, triagem, pacientes, sessões, atividades, formulários, notificações e o painel.
+
+## Subir
 
 ```bash
 make bootstrap
 ```
 
-O comando prepara `.env`, instala dependencias e sobe toda a stack local.
-
-## Comandos principais
+Isso prepara o `.env`, instala dependência e sobe a stack. A API fica na porta 8000. `GET /health` devolve o estado do Postgres e do Redis.
 
 ```bash
-make down       # derruba a stack
-make health     # healthcheck da API
-make pipeline   # lint + typecheck + test + build
-make clean      # limpa venv/node_modules/volumes
+make health
+make down
+make pipeline
 ```
 
-## Convencao de commit
+No simulador do iPhone, com o backend no ar:
 
-Usar Conventional Commits conforme [`docs/COMMIT_CONVENTION.md`](docs/COMMIT_CONVENTION.md).
+```bash
+make run-ios
+```
+
+Dá para trocar o aparelho: `make run-ios IOS_DEVICE="iPhone 16"`.
+
+## Onde mexer
+
+- `backend/app/api/` são as rotas.
+- `backend/alembic/versions/` é o histórico do banco, inclusive o isolamento por consultório.
+- `front-end/` é o app.
+- `infra/docker-compose.yml` é o Postgres, o Redis, a API e o worker.
+
+Pedro Américo Paletot, [peamericoo](https://github.com/peamericoo).
