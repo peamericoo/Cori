@@ -2,6 +2,14 @@
   <img src="assets/demo.gif" alt="Cori. O make bootstrap sobe Postgres, Redis e a API. O /health responde ok." width="820">
 </p>
 
+## A tela
+
+App de iPhone. O login já vem com a conta de exemplo, `dr.aurora@cori.dev`. O painel abaixo é a sessão do psicólogo, com a agenda do dia preenchida.
+
+<p align="center">
+  <img src="assets/tela.png" alt="Cori no mock de iPhone, painel do psicólogo com a agenda da tarde." width="360">
+</p>
+
 Cori é o sistema do consultório de psicologia. Clínica, paciente, triagem, agenda, atividade e formulário no mesmo lugar. Cada consultório fica isolado do outro.
 
 ## Do que é feito
